@@ -1,0 +1,50 @@
+@page
+@using HelloChinese.Enums
+@model Create
+
+@{
+    ViewData["Title"] = "Nueva Entrada";
+    Layout = "_Layout";
+}
+
+@section Scripts
+{
+    
+}
+
+<h1>Nueva entrada</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-3 mb-3">
+        <label for="@nameof(Model.Record.Handwriting)" class="form-label">Caligrafía (CHINO)</label>
+        <input type="text" class="form-control" style="background-color: lightyellow;" id="@nameof(Model.Record.Handwriting)" value="@Model.Record.Handwriting"/>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <label for="@nameof(Model.Record.Pronunciation)" class="form-label">Pinyin (Pronunciación)</label>
+        <input type="text" class="form-control" id="@nameof(Model.Record.Pronunciation)" value="@Model.Record.Pronunciation"/>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <label for="@nameof(Model.Record.Meaning)" class="form-label">Significado</label>
+        <input type="text" class="form-control" id="@nameof(Model.Record.Meaning)" value="@Model.Record.Meaning"/>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <label for="@nameof(Model.Record.Category)" class="form-label">Tipo de Vuelo</label>
+        <select class="form-select" id="@nameof(Model.Record.Category)" name="@Model.Record.Category">
+            <option value="@((int)CategoriesEnum.DEFAULT)" selected="@((Model.Record.Category == CategoriesEnum.DEFAULT))"></option>
+            <option value="@((int)CategoriesEnum.VERB)" selected="@((Model.Record.Category == CategoriesEnum.VERB))">Verbo</option>
+            <option value="@((int)CategoriesEnum.NOUN)" selected="@((Model.Record.Category == CategoriesEnum.NOUN))">Sustantivo</option>
+            <option value="@((int)CategoriesEnum.ADJECTIVE)" selected="@((Model.Record.Category == CategoriesEnum.ADJECTIVE))">Adjetivo</option>
+            <option value="@((int)CategoriesEnum.DAY_OF_THE_WEEK)" selected="@((Model.Record.Category == CategoriesEnum.DAY_OF_THE_WEEK))">Día de la semana</option>
+            <option value="@((int)CategoriesEnum.NUMBERS)" selected="@((Model.Record.Category == CategoriesEnum.NUMBERS))">Números</option>
+            <option value="@((int)CategoriesEnum.MONTH_OF_THE_YEAR)" selected="@((Model.Record.Category == CategoriesEnum.MONTH_OF_THE_YEAR))">Mes del año</option>
+            <option value="@((int)CategoriesEnum.CLASSIFIER)" selected="@((Model.Record.Category == CategoriesEnum.CLASSIFIER))">Clasificador</option>
+            <option value="@((int)CategoriesEnum.QUESTIONS)" selected="@((Model.Record.Category == CategoriesEnum.QUESTIONS))">Pregunta</option>
+            <option value="@((int)CategoriesEnum.PHARASES)" selected="@((Model.Record.Category == CategoriesEnum.PHARASES))">Frase</option>
+        </select>
+    </div>
+</div>

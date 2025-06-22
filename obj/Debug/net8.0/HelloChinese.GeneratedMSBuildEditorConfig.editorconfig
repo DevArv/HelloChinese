@@ -18,16 +18,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/alexrodriguez/Library/Mobile Documents/com~apple~CloudDocs/Documents/01 Projects/HelloChinese/HelloChinese
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/alexrodriguez/Library/Mobile Documents/com~apple~CloudDocs/Documents/01 Projects/HelloChinese/HelloChinese/Pages/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+[/Users/alexrodriguez/Library/Mobile Documents/com~apple~CloudDocs/Documents/01 Projects/HelloChinese/HelloChinese/Pages/Entries/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRW50cmllcy9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/alexrodriguez/Library/Mobile Documents/com~apple~CloudDocs/Documents/01 Projects/HelloChinese/HelloChinese/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/alexrodriguez/Library/Mobile Documents/com~apple~CloudDocs/Documents/01 Projects/HelloChinese/HelloChinese/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/alexrodriguez/Library/Mobile Documents/com~apple~CloudDocs/Documents/01 Projects/HelloChinese/HelloChinese/Pages/Shared/_ValidationScriptsPartial.cshtml]
