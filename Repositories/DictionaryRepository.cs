@@ -1,6 +1,7 @@
 using HelloChinese.DatabaseConnection;
 using HelloChinese.Models;
 using HelloChinese.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace HelloChinese.Repositories;
 
@@ -45,5 +46,25 @@ public class DictionaryRepository
             await transaction.RollbackAsync();
             throw new ApplicationException($"Error al guardar", ex);
         }
+    }
+
+    public async Task<DictionarySimpleViewModel?> GetRecordAsync(Guid ID)
+    {
+        await using var context = new HelloChineseContext();
+
+        var query = await context.Dictionary
+            .Where(d => d.ID == ID)
+            .Select(d => new DictionarySimpleViewModel
+            {
+                ID = d.ID,
+                Date = d.Date,
+                Handwriting = d.Handwriting,
+                Pronunciation = d.Pronunciation,
+                Meaning = d.Meaning,
+                Category = d.Category
+            })
+            .FirstOrDefaultAsync();
+
+        return query;
     }
 }

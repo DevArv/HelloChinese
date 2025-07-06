@@ -2,12 +2,12 @@
   "compilerOptions": {
     "target": "ES2020",           // Nivel de JS que quieres generar
     "module": "CommonJS",         // Módulo compatible con Node.js
-    "outDir": "dist",             // Carpeta de salida para los .js
-    "rootDir": "src",             // Carpeta donde están tus .ts
+    "outDir": "wwwroot/js",       // Carpeta de salida para los .js
+    "rootDir": "wwwroot/ts",     // Carpeta donde están tus .ts
     "strict": true,               // Reglas estrictas (opcional pero recomendado)
     "esModuleInterop": true,      // Para poder importar módulos comunes
     "skipLibCheck": true,         // Evita revisar definiciones de terceros
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"]
+  "include": ["wwwroot/ts/**/*"]
 }
