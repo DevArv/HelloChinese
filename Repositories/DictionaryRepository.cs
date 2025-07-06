@@ -68,4 +68,23 @@ public class DictionaryRepository
 
         return query;
     }
+    
+    public async Task<List<DictionarySimpleViewModel>> GetTableFlightPlansAsync()
+    {
+        await using var context = new HelloChineseContext();
+        
+        var query = await (from p in context.Dictionary.AsNoTracking()
+            orderby p.Date descending
+            select new DictionarySimpleViewModel()
+            {
+                ID = p.ID,
+                Date = p.Date,
+                Handwriting = p.Handwriting,
+                Pronunciation = p.Pronunciation,
+                Meaning = p.Meaning,
+                Category = p.Category
+            }).ToListAsync();
+
+        return query;
+    }
 }

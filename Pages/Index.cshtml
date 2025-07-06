@@ -1,6 +1,75 @@
 ﻿@page
+@using HelloChinese.Constants
+@using HelloChinese.Enums
 @model IndexModel
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Inicio";
 }
 
+<h1>Tabla de Entradas</h1>
+
+@if (!string.IsNullOrWhiteSpace(Model.Error))
+{
+    <div class="alert alert-danger" role="alert">@Model.Error</div>
+}
+
+@{
+    var categories = new Dictionary<CategoriesEnum, string>
+    {
+        { CategoriesEnum.DEFAULT, "" },
+        { CategoriesEnum.VERB, "Verbo" },
+        { CategoriesEnum.NOUN, "Sustantivo" },
+        { CategoriesEnum.ADJECTIVE, "Adjetivo" },
+        { CategoriesEnum.DAY_OF_THE_WEEK, "Día de la semana" },
+        { CategoriesEnum.NUMBERS, "Números" },
+        { CategoriesEnum.MONTH_OF_THE_YEAR, "Mes del año" },
+        { CategoriesEnum.CLASSIFIER, "Clasificador" },
+        { CategoriesEnum.QUESTIONS, "Pregunta" },
+        { CategoriesEnum.PHARASES, "Frase" },
+    };
+}
+
+
+<input type="text" id="searchInput" class="form-control col-md-12" placeholder="Buscar..." />
+
+<br />
+
+<table class="table table-striped" id="myTable">
+    <thead>
+    <tr>
+        <th>Fecha</th>
+        <th>Caligrafía</th>
+        <th>Pinyin</th>
+        <th>Significado</th>
+        <th>Categoría</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var record in Model.Record)
+    {
+        <tr>
+            <td>@record.Date.ToString(Global.DATETIME_FORMAT_V2)</td>
+            <td><a asp-page="/Entries/Details" asp-route-ID="@record.ID">@record.Handwriting</a></td>
+            <td>@record.Pronunciation</td>
+            <td>@record.Meaning</td>
+            <td>@categories[record.Category]</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section Scripts
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const SEARCH_INPUT = document.getElementById('searchInput');
+            SEARCH_INPUT.addEventListener('input', () => {
+                const TERM = SEARCH_INPUT.value.toLowerCase();
+                document.querySelectorAll('#myTable tbody tr').forEach(row => {
+                    const TEXT = row.textContent.toLowerCase();
+                    row.style.display = TEXT.includes(TERM) ? '' : 'none';
+                })
+            })
+        })
+    </script>
+}

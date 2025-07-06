@@ -1,4 +1,7 @@
 @page
+@using HelloChinese.Constants
+@using HelloChinese.Enums
+@using HelloChinese.Helpers
 @model Details
 @{
     ViewData["Title"] = "Detalle";
@@ -7,27 +10,41 @@
 
 <h1>Detalle de la entrada</h1>
 <hr />
+
+@Html.HcListButton()
+<hr />
+
 <div class="row">
     <div class="col-md-3 mb-3">
         <label for="@nameof(Model.Record.Date)" class="form-label">Fecha</label>
-        <input type="date" class="form-control" id="@nameof(Model.Record.Date)" value="@Model.Record.Date.ToString("yyyy-MM-dd")" readonly />
+        <input type="date" class="form-control" id="@nameof(Model.Record.Date)" value="@Model.Record.Date.ToString(Global.DATETIME_FORMAT_V2)" disabled="disabled" />
     </div>
     <div class="col-md-3 mb-3">
         <label for="@nameof(Model.Record.Handwriting)" class="form-label">Caligrafía</label>
-        <input type="text" class="form-control" id="@nameof(Model.Record.Handwriting)" value="@Model.Record.Handwriting" readonly />
+        <input type="text" class="form-control" id="@nameof(Model.Record.Handwriting)" value="@Model.Record.Handwriting" disabled="disabled" />
     </div>
     <div class="col-md-3 mb-3">
         <label for="@nameof(Model.Record.Pronunciation)" class="form-label">Pinyin</label>
-        <input type="text" class="form-control" id="@nameof(Model.Record.Pronunciation)" value="@Model.Record.Pronunciation" readonly />
+        <input type="text" class="form-control" id="@nameof(Model.Record.Pronunciation)" value="@Model.Record.Pronunciation" disabled="disabled" />
     </div>
     <div class="col-md-3 mb-3">
         <label for="@nameof(Model.Record.Meaning)" class="form-label">Significado</label>
-        <input type="text" class="form-control" id="@nameof(Model.Record.Meaning)" value="@Model.Record.Meaning" readonly />
+        <input type="text" class="form-control" id="@nameof(Model.Record.Meaning)" value="@Model.Record.Meaning" disabled="disabled" />
     </div>
     <div class="col-md-3 mb-3">
         <label for="@nameof(Model.Record.Category)" class="form-label">Categoría</label>
-        <input type="text" class="form-control" id="@nameof(Model.Record.Category)" value="@Model.Record.Category" readonly />
+        <select class="form-select" id="@nameof(Model.Record.Category)" name="@Model.Record.Category" disabled="disabled">
+            <option value="@((int)CategoriesEnum.DEFAULT)" selected="@((Model.Record.Category == CategoriesEnum.DEFAULT))"></option>
+            <option value="@((int)CategoriesEnum.VERB)" selected="@((Model.Record.Category == CategoriesEnum.VERB))">Verbo</option>
+            <option value="@((int)CategoriesEnum.NOUN)" selected="@((Model.Record.Category == CategoriesEnum.NOUN))">Sustantivo</option>
+            <option value="@((int)CategoriesEnum.ADJECTIVE)" selected="@((Model.Record.Category == CategoriesEnum.ADJECTIVE))">Adjetivo</option>
+            <option value="@((int)CategoriesEnum.DAY_OF_THE_WEEK)" selected="@((Model.Record.Category == CategoriesEnum.DAY_OF_THE_WEEK))">Día de la semana</option>
+            <option value="@((int)CategoriesEnum.NUMBERS)" selected="@((Model.Record.Category == CategoriesEnum.NUMBERS))">Números</option>
+            <option value="@((int)CategoriesEnum.MONTH_OF_THE_YEAR)" selected="@((Model.Record.Category == CategoriesEnum.MONTH_OF_THE_YEAR))">Mes del año</option>
+            <option value="@((int)CategoriesEnum.CLASSIFIER)" selected="@((Model.Record.Category == CategoriesEnum.CLASSIFIER))">Clasificador</option>
+            <option value="@((int)CategoriesEnum.QUESTIONS)" selected="@((Model.Record.Category == CategoriesEnum.QUESTIONS))">Pregunta</option>
+            <option value="@((int)CategoriesEnum.PHARASES)" selected="@((Model.Record.Category == CategoriesEnum.PHARASES))">Frase</option>
+        </select>
     </div>
 </div>
 <hr />
-@Html.HcListButton()
