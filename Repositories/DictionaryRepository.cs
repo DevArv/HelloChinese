@@ -38,7 +38,8 @@ public class DictionaryRepository
 
             context.Dictionary.Add(dictionary);
             await context.SaveChangesAsync();
-            
+            await transaction.CommitAsync();
+
             return dictionary.ID;
         }
         catch (Exception ex)
