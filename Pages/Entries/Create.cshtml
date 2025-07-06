@@ -1,5 +1,6 @@
 @page
 @using HelloChinese.Enums
+@using HelloChinese.Helpers
 @model Create
 
 @{
@@ -9,7 +10,7 @@
 
 @section Scripts
 {
-    
+    <script src="~/js/create-record.js?v=2" asp-append-version="true"></script>
 }
 
 <h1>Nueva entrada</h1>
@@ -18,22 +19,27 @@
 
 <div class="row">
     <div class="col-md-3 mb-3">
-        <label for="@nameof(Model.Record.Handwriting)" class="form-label">Caligrafía (CHINO)</label>
-        <input type="text" class="form-control" style="background-color: lightyellow;" id="@nameof(Model.Record.Handwriting)" value="@Model.Record.Handwriting"/>
+        <label for="@nameof(Model.Record.Date)" class="form-label">Fecha</label>
+        <input type="date" class="form-control" style="background-color: lightyellow;" id="@nameof(Model.Record.Date)" value="@Model.Record.Date.ToString("yyyy-MM-dd")"/>
     </div>
     
     <div class="col-md-3 mb-3">
-        <label for="@nameof(Model.Record.Pronunciation)" class="form-label">Pinyin (Pronunciación)</label>
+        <label for="@nameof(Model.Record.Handwriting)" class="form-label">Caligrafía</label>
+        <input type="text" class="form-control" style="background-color: lightyellow;" id="@nameof(Model.Record.Handwriting)" value="@Model.Record.Handwriting"/>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <label for="@nameof(Model.Record.Pronunciation)" class="form-label">Pinyin</label>
         <input type="text" class="form-control" id="@nameof(Model.Record.Pronunciation)" value="@Model.Record.Pronunciation"/>
     </div>
-    
+
     <div class="col-md-3 mb-3">
         <label for="@nameof(Model.Record.Meaning)" class="form-label">Significado</label>
         <input type="text" class="form-control" id="@nameof(Model.Record.Meaning)" value="@Model.Record.Meaning"/>
     </div>
-    
+
     <div class="col-md-3 mb-3">
-        <label for="@nameof(Model.Record.Category)" class="form-label">Tipo de Vuelo</label>
+        <label for="@nameof(Model.Record.Category)" class="form-label">Categoría</label>
         <select class="form-select" id="@nameof(Model.Record.Category)" name="@Model.Record.Category">
             <option value="@((int)CategoriesEnum.DEFAULT)" selected="@((Model.Record.Category == CategoriesEnum.DEFAULT))"></option>
             <option value="@((int)CategoriesEnum.VERB)" selected="@((Model.Record.Category == CategoriesEnum.VERB))">Verbo</option>
@@ -48,3 +54,7 @@
         </select>
     </div>
 </div>
+
+<hr />
+
+@Html.HcSaveButton(OnClick: "record_create.save()")

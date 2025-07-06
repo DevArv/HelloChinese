@@ -651,4 +651,6 @@ fabric.properties
 !/wwwroot/js/site.js
 docker-compose.yml
 appsettings.Development.json
-workspace.xml
+.idea/**/workspace.xml
+*.cache
+!*.cache/
